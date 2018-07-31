@@ -352,6 +352,33 @@ public class DataHandlerTest{
             }
         }
         assertEquals(0, numberappt);
+        
+        
+        
+        
+        //new_start
+        DataHandler data1 = new DataHandler("calendar_test.xml");
+        GregorianCalendar firstday = new GregorianCalendar(2018, 0, 1);
+        GregorianCalendar lastday = new GregorianCalendar(2018, 1, 1);
+        Appt appt0 = new Appt(5, 5, 1, 1, 2018, "Event", "This is an event.", "home@yahoo.com");
+        int[] recurDaysArr = {8};
+        appt0.setRecurrence(recurDaysArr, -404, 1, 100);
+        appt0.setValid();
+        data1.saveAppt(appt0);
+        LinkedList<CalDay> calDays1 = new LinkedList<CalDay>();
+        calDays1 = (LinkedList<CalDay>) data1.getApptRange(firstday, lastday);
+        int numberappts = 0;
+        for (int i = 0; i < calDays1.size(); i++) {
+            LinkedList<Appt>  appts1 = calDays1.get(i).getAppts();
+            for(int ii = 0; ii < appts1.size(); ii++) {
+                numberappts++;
+            }
+        }
+        assertEquals(1, numberappts);
+        
+        
+        
+        
     }
    
     
