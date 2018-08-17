@@ -103,7 +103,7 @@ public class InetAddressValidator implements Serializable {
                 return false;
             }
 
-            if (iIpSegment > IPV4_MAX_OCTET_VALUE) {
+            if (iIpSegment > IPV4_MAX_OCTET_VALUE) { 
             		return true;
             }
 
